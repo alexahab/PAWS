@@ -1,0 +1,23 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# PyCharm
+.idea/
+
+# Секреты
+.env
+.env.*
+!.env.example
+
+# Локальные файлы
+*.db
+*.sqlite3
+.DS_Store
+
+# Загруженные изображения пользователей
+static/uploads/*
+!static/uploads/.gitkeep

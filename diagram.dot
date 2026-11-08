@@ -1,0 +1,14 @@
+digraph ER {
+  graph [rankdir=LR, bgcolor="white", pad="0.35", nodesep="0.6", ranksep="1.0", fontname="DejaVu Sans"];
+  node [shape=plaintext, fontname="DejaVu Sans"];
+  edge [fontname="DejaVu Sans", color="#4a8070", arrowsize=0.7];
+  users [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="7" COLOR="#377c67"><TR><TD BGCOLOR="#377c67"><FONT COLOR="white"><B>USERS</B></FONT></TD></TR><TR><TD ALIGN="LEFT">PK id : INTEGER</TD></TR><TR><TD ALIGN="LEFT">name : TEXT</TD></TR><TR><TD ALIGN="LEFT">email : TEXT UNIQUE</TD></TR><TR><TD ALIGN="LEFT">password_hash : TEXT</TD></TR><TR><TD ALIGN="LEFT">role : TEXT</TD></TR><TR><TD ALIGN="LEFT">is_blocked : BOOLEAN</TD></TR><TR><TD ALIGN="LEFT">created_at : DATETIME</TD></TR></TABLE>>];
+  ads [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="7" COLOR="#377c67"><TR><TD BGCOLOR="#377c67"><FONT COLOR="white"><B>ADS</B></FONT></TD></TR><TR><TD ALIGN="LEFT">PK id : INTEGER</TD></TR><TR><TD ALIGN="LEFT">FK user_id : INTEGER</TD></TR><TR><TD ALIGN="LEFT">kind : lost / found</TD></TR><TR><TD ALIGN="LEFT">animal_name : TEXT</TD></TR><TR><TD ALIGN="LEFT">species : TEXT</TD></TR><TR><TD ALIGN="LEFT">city : TEXT</TD></TR><TR><TD ALIGN="LEFT">district : TEXT</TD></TR><TR><TD ALIGN="LEFT">description : TEXT</TD></TR><TR><TD ALIGN="LEFT">contact : TEXT</TD></TR><TR><TD ALIGN="LEFT">image_filename : TEXT</TD></TR><TR><TD ALIGN="LEFT">status : TEXT</TD></TR><TR><TD ALIGN="LEFT">rejection_reason : TEXT</TD></TR><TR><TD ALIGN="LEFT">created_at : DATETIME</TD></TR><TR><TD ALIGN="LEFT">updated_at : DATETIME</TD></TR></TABLE>>];
+  likes [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="7" COLOR="#377c67"><TR><TD BGCOLOR="#377c67"><FONT COLOR="white"><B>LIKES</B></FONT></TD></TR><TR><TD ALIGN="LEFT">PK/FK user_id : INTEGER</TD></TR><TR><TD ALIGN="LEFT">PK/FK ad_id : INTEGER</TD></TR><TR><TD ALIGN="LEFT">created_at : DATETIME</TD></TR></TABLE>>];
+  reports [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="7" COLOR="#377c67"><TR><TD BGCOLOR="#377c67"><FONT COLOR="white"><B>REPORTS</B></FONT></TD></TR><TR><TD ALIGN="LEFT">PK id : INTEGER</TD></TR><TR><TD ALIGN="LEFT">FK user_id : INTEGER</TD></TR><TR><TD ALIGN="LEFT">FK ad_id : INTEGER</TD></TR><TR><TD ALIGN="LEFT">reason : TEXT</TD></TR><TR><TD ALIGN="LEFT">created_at : DATETIME</TD></TR></TABLE>>];
+  users -> ads [label="1 : N  автор"];
+  users -> likes [label="1 : N"];
+  ads -> likes [label="1 : N"];
+  users -> reports [label="1 : N"];
+  ads -> reports [label="1 : N"];
+}
